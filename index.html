@@ -1044,6 +1044,7 @@ footer p { max-width: 100ch; }
           <h3 class="verdict" id="paper-verdict">Same inputs, same 2020 date: five ranges land close to the published figures, two do not.</h3>
           <p>Mackey et&nbsp;al. report % disturbed in 2020 for each range inside Ontario's Area of Undertaking, from one snapshot with every road in the network. Here the same area and date come from the annual series, with the same Ontario road, land cover, inventory and fire sources.</p>
           <p id="paper-copy"></p>
+          <p class="callout" id="paper-swap"></p>
         </div>
         <div class="q-figs">
           <figure class="plate">
@@ -2018,6 +2019,12 @@ const S = {"detail":{"range":"Churchill","km":27.0,"res":30,"landcover":{"Water"
       ' points (' + fmt(mean('v3'), 1) + ' before Ontario roads were added). ' + far.map(p => p.range + ' is ' + fmt(Math.abs(gap(p, k)), 1) + ' points ' + (gap(p, k) < 0 ? 'below' : 'above')).join('; ') + (far.length ? '.' : '');
   }
   paperText();
+  (function paperSwap() {
+    const n = S.paper.find(p => p.range === 'Nipigon'), s = S.paper.find(p => p.range === 'Sydney');
+    $('#paper-swap').innerHTML = '<b>Nipigon and Sydney look transposed.</b> The published values for Nipigon (' + fmt(n.paper, 1) + '%) and Sydney (' + fmt(s.paper, 1) +
+      '%) each match our figure for the other range: Sydney ' + fmt(s.land, 1) + '% and Nipigon ' + fmt(n.land, 1) + '% on land only (' + fmt(s.ours, 1) + '% and ' + fmt(n.ours, 1) +
+      '% with lakes). The swap also agrees with the same table\'s 2011 ECCC assessments, which rate Nipigon as likely self-sustaining and Sydney as unlikely, and with ECCC\'s own layers (Nipigon lower, Sydney higher). The range areas in the table are not swapped.';
+  })();
   (function paperTable() {
     const gap = (p, key) => p[key] - p.paper;
     let h = '<table class="data-table"><thead><tr><th>Range</th><th class="num">Published</th><th class="num">Land only</th><th class="num">Land and water</th><th class="num">Previous version</th><th class="num">Gap, land only</th><th class="num">Gap, land and water</th></tr></thead><tbody>';
