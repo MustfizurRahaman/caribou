@@ -404,10 +404,6 @@ svg .closeup { fill: none; stroke: #171a14; stroke-width: 1.8; vector-effect: no
 .checks li { display: grid; grid-template-columns: 7.2rem minmax(0, 1fr); gap: 12px; align-items: baseline; font-size: 0.96rem; }
 .status { font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 7px; border-radius: 2px; border: 1px solid var(--line-2); color: var(--ink-2); justify-self: start; white-space: nowrap; }
 .status.done { border-color: var(--accent); color: var(--accent); }
-.added { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.added li { display: grid; gap: 1px; padding-left: 12px; border-left: 2px solid #2a78d6; }
-.added b { font-family: var(--f-display); font-stretch: 88%; font-weight: 650; font-size: 1rem; }
-.added span { font-size: 0.93rem; line-height: 1.45; color: var(--ink-2); }
 .chip.new { background: #dde9f7; color: #1d4f8f; font-family: var(--f-mono); font-size: 0.64rem; letter-spacing: 0.05em; text-transform: uppercase; margin: 0 0 0 6px; vertical-align: 1px; }
 .block-head { display: grid; gap: 10px; margin-bottom: 18px; }
 .block-head p { color: var(--ink-2); max-width: none; }
@@ -606,7 +602,6 @@ footer p { max-width: 100ch; }
   <header class="mast">
     <div class="brand"><b>Caribou Habitat Analysis</b></div>
     <nav aria-label="Sections">
-      <a href="#update">What's new</a>
       <a href="#ranges">Range by range</a>
       <a href="#method">Method</a>
       <a href="#change">Results</a>
@@ -684,46 +679,6 @@ footer p { max-width: 100ch; }
         <div class="keystat"><span class="k">Core habitat, 2025</span><span class="v" id="ks-core">3.06 Mha</span><span class="d" id="ks-core-d">−4.3% since 2015</span></div>
         <div class="keystat"><span class="k">Share of range disturbed</span><span class="v" id="ks-dist">43.6%</span><span class="d" id="ks-dist-d">up from 41.4% in 2015</span></div>
         <div class="keystat"><span class="k">Ranges above ECCC's 35% threshold</span><span class="v" id="ks-over">6 of 7</span><span class="d">in 2025, on Ontario range boundaries</span></div>
-      </div>
-    </section>
-
-    <section id="update" aria-labelledby="update-h">
-      <div class="sec-head">
-        <p class="eyebrow">What's new · <span data-bind="built">2026-09-14</span></p>
-        <h2 id="update-h">Roads now enter the map in the year they were built</h2>
-        <p id="update-lede">The previous version took roads and infrastructure only from ECCC's 2020 footprint, mapped from Landsat at 1:50,000. That missed most forest access roads. This version adds Ontario's road network and the other Ontario disturbance sources used by Mackey et&nbsp;al. (2024), and brings roads into the annual series by construction year.</p>
-      </div>
-
-      <div class="q">
-        <div class="q-copy">
-          <p class="eyebrow">Added inputs</p>
-          <h3 class="verdict" id="update-verdict">Disturbance rises in every range; core habitat falls.</h3>
-          <ul class="added">
-            <li><b>MNRF Road Segments</b><span>Roads with an actual or approximate construction year enter that year. Roads recorded as built "before" a year, or with no usable year, count in every year. Buffered 500&nbsp;m.</span></li>
-            <li><b>National Road Network</b><span>Fills roads missing from the MNRF layer. Undated, so present in every year. Buffered 500&nbsp;m.</span></li>
-            <li><b>Ontario Land Cover Compilation v2</b><span>Mining and extraction, settlements and infrastructure, and rural land (classes 25, 27, 28). Buffered 500&nbsp;m.</span></li>
-            <li><b>Inventory unclassified polygons</b><span>Mostly road and rail corridors in the forest resources inventory. Buffered 500&nbsp;m.</span></li>
-            <li><b>National Fire Database</b><span>Burns missing from the inventory, counted for 40 years.</span></li>
-          </ul>
-          <div class="figline" id="update-figs"></div>
-        </div>
-        <div class="q-figs">
-          <figure class="plate">
-            <div class="plate-head">
-              <span class="plate-title">Share of each range disturbed, 2025</span>
-              <span class="plate-meta">Ontario range boundaries</span>
-            </div>
-            <div class="plate-foot" style="border-top:0;border-bottom:1px solid var(--p-line)">
-              <span class="key"><span class="sw ring"></span>Previous version (ECCC roads only)</span>
-              <span class="key"><span class="sw dot"></span>This version</span>
-            </div>
-            <div class="chart" id="chart-update"></div>
-            <details class="nums">
-              <summary>Show the numbers</summary>
-              <div class="tablewrap" id="table-update"></div>
-            </details>
-          </figure>
-        </div>
       </div>
     </section>
 
@@ -1137,6 +1092,7 @@ footer p { max-width: 100ch; }
   <footer>
     <p>Method after Mackey, B. et al. (2024). Assessing the cumulative impacts of forest management on forest age structure development and woodland caribou habitat in boreal landscapes: a case study from two Canadian provinces. <i>Land</i> 13, 6.</p>
     <p>Code: <a href="https://github.com/MustfizurRahaman/caribou" target="_blank" rel="noopener">github.com/MustfizurRahaman/caribou</a> · Forest disturbance web map: <a href="https://foresttrace.vercel.app" target="_blank" rel="noopener">ForestTRACE</a></p>
+    <p>Contributor: <a href="https://www.linkedin.com/in/rahamanmustafizur/" target="_blank" rel="noopener">Mustafizur Rahaman on LinkedIn</a></p>
     <p>Cover photo: Alain Caron, CC BY-SA 4.0, via Wikimedia Commons (cropped).</p>
     <p>All numbers come from the 2015–2025 caribou habitat analysis described on this page. Page built <span data-bind="built">2026-09-13</span>.</p>
   </footer>
@@ -1207,31 +1163,6 @@ const S = {"detail":{"range":"Churchill","km":27.0,"res":30,"landcover":{"Water"
   const listing = a => (a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1]);
   const sumHa = (fn) => RANGES.reduce((acc, r) => acc + fn(S.series[r]), 0);
 
-  /* ---------- what's new ---------- */
-  const EXR = S.explorer;
-  const km = k => RANGES.reduce((a, r) => a + EXR[r].roads[k], 0);
-  const coreChange = (T.core[last] / T.core_v3[last] - 1) * 100;
-  const up = RANGES.filter(r => S.series[r].dist[last] > S.series[r].dist_v3[last]);
-  const adds25 = RANGES.map(r => S.series[r].dist[last] - S.series[r].dist_v3[last]);
-  $('#update-verdict').textContent = (up.length === 7 ? 'Disturbance rises in every range' : 'Disturbance rises in ' + up.length + ' of 7 ranges') +
-    ', by ' + fmt(Math.min(...adds25), 1) + ' to ' + fmt(Math.max(...adds25), 1) + ' points in 2025, and core habitat falls ' + fmt(Math.abs(coreChange), 1) + '%.';
-  $('#update-figs').innerHTML = [
-    ['MNRF roads in the ranges', fmt(km('km_all')) + ' km'],
-    ['Built 2016–2025', fmt(km('km_new')) + ' km'],
-    ['Core habitat, 2025', signed(coreChange) + '%'],
-  ].map(x => '<div><span class="k">' + x[0] + '</span><span class="v">' + x[1] + '</span></div>').join('');
-  const updateRows = RANGES.map(r => ({ range: r, prev: S.series[r].dist_v3[last], now: S.series[r].dist[last] }));
-  const updateTip = u => '<b>' + u.range + ', 2025</b><br><span class="s">Previous</span> <span class="m">' + fmt(u.prev, 1) + '%</span> · ' + risk(u.prev) +
-    '<br><span class="s">This version</span> <span class="m">' + fmt(u.now, 1) + '%</span> · ' + risk(u.now) + '<br><span class="s">Change</span> <span class="m">' + signed(u.now - u.prev) + ' pts</span>';
-  (function tableUpdate() {
-    let h = '<table class="data-table"><thead><tr><th>Range</th><th class="num">2015 before</th><th class="num">2015 now</th><th class="num">2025 before</th><th class="num">2025 now</th><th class="num">Core 2025 before (ha)</th><th class="num">Core 2025 now (ha)</th><th class="num">Core change</th></tr></thead><tbody>';
-    RANGES.forEach(r => {
-      const s = S.series[r];
-      h += '<tr><td>' + r + '</td><td class="num">' + fmt(s.dist_v3[0], 1) + '%</td><td class="num">' + fmt(s.dist[0], 1) + '%</td><td class="num">' + fmt(s.dist_v3[last], 1) + '%</td><td class="num">' + fmt(s.dist[last], 1) + '%</td><td class="num">' +
-        fmt(s.core_v3[last]) + '</td><td class="num">' + fmt(s.core[last]) + '</td><td class="num">' + signed((s.core[last] / s.core_v3[last] - 1) * 100) + '%</td></tr>';
-    });
-    $('#table-update').innerHTML = h + '</tbody></table>';
-  })();
 
   /* ---------- results copy ---------- */
   const alone = (t, i) => sumHa(s => (s.types_alone[t][i] * s.range_ha) / 100) / T.range_ha * 100;
@@ -2036,7 +1967,6 @@ const S = {"detail":{"range":"Churchill","km":27.0,"res":30,"landcover":{"Water"
     renderMultiples();
     renderComposition();
     renderTypes();
-    dumbbell($('#chart-update'), updateRows, 'prev', 'now', 'BEFORE', 'NOW', updateTip);
     dumbbell($('#chart-eccc'), S.q2, 'eccc_own', 'analysis', 'ECCC', 'OURS', ecccTip);
     renderPaper();
     sizeDashes();
