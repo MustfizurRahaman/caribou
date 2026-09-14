@@ -1018,12 +1018,6 @@ footer p { max-width: 100ch; }
           <p class="eyebrow">ECCC comparison</p>
           <h3 class="verdict" id="q2-verdict">ECCC's own layers put the seven ranges at 29–55% disturbed; finer harvest and fire data add 2.3 to 12.7 points.</h3>
           <p>The ECCC value here is computed from ECCC's published map layers: its 2020 footprint (human disturbance buffered 500 m, merged with 40 years of fire) divided by its federal range area. It has not yet been matched against the percentages printed in ECCC's reports. <span id="q2-copy"></span></p>
-          <ol class="checks">
-            <li><span class="status done">✓ Done</span><span>Compute % disturbed from ECCC's footprint and federal range layers.</span></li>
-            <li><span class="status done">✓ Done</span><span>Put the same footprint on our 30 m grid and Ontario boundaries: it lands within <span data-bind="maxDiff">0.7</span> points, so grid and boundary handling add little error.</span></li>
-            <li><span class="status">○ Not yet</span><span>Rebuild the footprint from ECCC's mapped roads, cutblocks and other features, and match it to the percentages ECCC publishes.</span></li>
-            <li><span class="status">◐ Partly</span><span>Add finer layers. Ontario harvest, roads by construction year, land cover, inventory corridors and national fire records are in; recent clearcuts mapped from satellite imagery are not yet.</span></li>
-          </ol>
         </div>
         <div class="q-figs">
           <figure class="plate">
@@ -1050,12 +1044,6 @@ footer p { max-width: 100ch; }
           <h3 class="verdict" id="paper-verdict">Same inputs, same 2020 date: five ranges land close to the published figures, two do not.</h3>
           <p>Mackey et&nbsp;al. report % disturbed in 2020 for each range inside Ontario's Area of Undertaking, from one snapshot with every road in the network. Here the same area and date come from the annual series, with the same Ontario road, land cover, inventory and fire sources.</p>
           <p id="paper-copy"></p>
-          <ol class="checks">
-            <li><span class="status done">✓ Tested</span><span id="paper-water">Water in the area total.</span></li>
-            <li><span class="status done">✓ Tested</span><span>Fire window. Burns from 1980 alone make up 9 points in Brightsand and 3.5 in Sydney. Dropping them moves Brightsand further from the published figure and still leaves Sydney about 15 points above it.</span></li>
-            <li><span class="status done">✓ Tested</span><span>Each added source on its own. MNRF roads add the most; the National Road Network, land cover classes and inventory corridors add little beyond them.</span></li>
-            <li><span class="status">○ Open</span><span>Nipigon and Sydney. No combination of the published inputs reproduces either; the authors' layers are needed to close them.</span></li>
-          </ol>
         </div>
         <div class="q-figs">
           <figure class="plate">
@@ -2028,10 +2016,6 @@ const S = {"detail":{"range":"Churchill","km":27.0,"res":30,"landcover":{"Water"
       (far.length ? '; ' + listing(far.map(p => p.range)) + ' do not.' : '.');
     $('#paper-copy').textContent = (k === 'land' ? 'With water left out of the area total' : 'With lakes counted in the area total') + ', the mean gap across the seven ranges is ' + fmt(mean(k), 1) +
       ' points (' + fmt(mean('v3'), 1) + ' before Ontario roads were added). ' + far.map(p => p.range + ' is ' + fmt(Math.abs(gap(p, k)), 1) + ' points ' + (gap(p, k) < 0 ? 'below' : 'above')).join('; ') + (far.length ? '.' : '');
-    const narrows = S.paper.filter(p => Math.abs(gap(p, 'land')) < Math.abs(gap(p, 'ours'))).map(p => p.range);
-    const lift = S.paper.map(p => p.land - p.ours);
-    $('#paper-water').textContent = 'Water. Leaving lakes out of the area total raises our figures by ' + fmt(Math.min(...lift), 1) + '–' + fmt(Math.max(...lift), 1) + ' points. That narrows the gap in ' +
-      listing(narrows) + ' and widens it in the other ' + (7 - narrows.length) + ', so it does not explain the differences.';
   }
   paperText();
   (function paperTable() {
