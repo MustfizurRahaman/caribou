@@ -598,7 +598,6 @@ footer p { max-width: 100ch; }
       <a href="#ranges">Range by range</a>
       <a href="#method">Method</a>
       <a href="#change">What changed</a>
-      <a href="#validation">Validation</a>
       <a href="#context">Boundaries &amp; forests</a>
       <a href="#limits">Caveats</a>
       <a class="ext" href="https://github.com/MustfizurRahaman/caribou/blob/main/notebooks/ontario_caribou_core_habitat_2015_2025.ipynb" target="_blank" rel="noopener">Notebook ↗</a>
@@ -892,29 +891,6 @@ footer p { max-width: 100ch; }
             <span class="key"><span class="sw" style="background:#00330f"></span>&gt;10,000 ha</span>
           </div>
           <div class="chart" id="chart-comp"></div>
-        </figure>
-      </div>
-    </section>
-
-    <section id="validation" aria-labelledby="validation-h">
-      <div class="split">
-        <div class="copy">
-          <p class="eyebrow">Check against the published method</p>
-          <h2 id="validation-h">How close are we to Mackey et&nbsp;al.?</h2>
-          <p>On the paper's own study-area boundary (each range clipped to the managed forest), five ranges land within 7.3 points of the published 2020 figures. Nipigon and Sydney do not.</p>
-          <p>Range areas match the paper to within 2%, so the gap sits in the disturbance inputs, most likely road and infrastructure layers the paper had and we do not. Risk classes agree for <span data-bind="riskMatch">4 of 7</span> ranges.</p>
-        </div>
-        <figure class="plate">
-          <div class="plate-head">
-            <span class="plate-title">Share of range disturbed, 2020</span>
-            <span class="plate-meta">study-area boundary</span>
-          </div>
-          <div class="plate-foot" style="border-top:0;border-bottom:1px solid var(--p-line)">
-            <span class="key"><span class="sw ring"></span>Published (Mackey et al. 2024)</span>
-            <span class="key"><span class="sw dot"></span>This analysis</span>
-            <span class="key"><span class="sw" style="background:linear-gradient(90deg,#f1f2ed,#ece6ef,#e2d7e7,#d5c3dd)"></span>ECCC risk class</span>
-          </div>
-          <div class="chart" id="chart-paper"></div>
         </figure>
       </div>
     </section>
@@ -1757,7 +1733,6 @@ const S = {"detail":{"range":"Churchill","km":27.0,"res":30,"landcover":{"Water"
   function renderAll() {
     renderMultiples();
     renderComposition();
-    dumbbell($('#chart-paper'), S.paper, 'paper', 'ours', 'PAPER', 'OURS', paperTip);
     dumbbell($('#chart-eccc'), S.q2, 'eccc_own', 'analysis', 'ECCC', 'OURS', ecccTip);
     sizeDashes();
     sizeExDash();
